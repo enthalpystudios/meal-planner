@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./bower_components/bootstrap-css-only/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css"/>
 </head>
 <body ng-app="mealPlannerApp">
 <div class="container" ng-controller="WeekMenuController">
@@ -18,7 +19,9 @@
                     <!--<input type="checkbox" ng-model="item.checked" ng-change="updateItem(weekMenu)"/> {{item.description}}-->
                 <!--</label>-->
             <!--</div>-->
-            {{weekMenu.id}} - {{weekMenu.startDate}} - {{weekMenu.endDate}}
+            {{weekMenu.id}}
+            {{ weekMenu.startDate | date:'dd-MM-yyyy' }}
+            {{ weekMenu.endDate | date:'dd-MM-yyyy' }}
             <div class="col-xs-3">
                 <button class="pull-right btn btn-danger" type="button" title="Delete"
                         ng-click="deleteWeekMenu(weekMenu)">
@@ -28,20 +31,44 @@
         </div>
         <hr />
         <div class="input-group">
-          <input type="text" name="startDate" ng-model="newWeekMenu.startDate" class="form-control" placeholder="Enter start date..." />
-          <input type="text" name="endDate" ng-model="newWeekMenu.endDate" class="form-control" placeholder="Enter end date..." />
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="submit" ng-disabled="!newWeekMenu" title="Add">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-          </span>
+            <div class="dropdown">
+                <a class="dropdown-toggle my-toggle-select" id="dLabelStart" role="button" data-toggle="dropdown" data-target="#" href="">
+                    <div class="input-append"><input type="text" class="input-large" data-ng-model="newWeekMenu.startDate"><span class="add-on"><i
+                            class="icon-calendar"></i></span>
+                    </div>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabelStart">
+                    <datetimepicker data-ng-model="newWeekMenu.startDate"
+                                    data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select', minView: 'day' }"></datetimepicker>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <a class="dropdown-toggle my-toggle-select" id="dLabelEnd" role="button" data-toggle="dropdown" data-target="#" href="">
+                    <div class="input-append"><input type="text" class="input-large" data-ng-model="newWeekMenu.endDate"><span class="add-on"><i
+                            class="icon-calendar"></i></span>
+                    </div>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabelEnd">
+                    <datetimepicker data-ng-model="newWeekMenu.endDate"
+                                    data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select', minView: 'day' }"></datetimepicker>
+                </ul>
+            </div>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" ng-disabled="!newWeekMenu" title="Add">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </span>
         </div>
     </form>
 
 </div>
+<script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="./bower_components/angular-resource/angular-resource.min.js"></script>
-<script type="text/javascript" src="./bower_components/lodash/lodash.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+
 <script type="text/javascript" src="./app/app.js"></script>
 <script type="text/javascript" src="./app/controllers.js"></script>
 <script type="text/javascript" src="./app/services.js"></script>
