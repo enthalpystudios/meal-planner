@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class WeekMenu {
@@ -20,6 +21,9 @@ public class WeekMenu {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column
     private Date endDate;
+
+    @OneToMany
+    private List<DailyMenu> dailyMenus;
 
     public Long getId() {
         return id;
@@ -43,5 +47,13 @@ public class WeekMenu {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public List<DailyMenu> getDailyMenus() {
+        return dailyMenus;
+    }
+
+    public void setDailyMenus(List<DailyMenu> dailyMenus) {
+        this.dailyMenus = dailyMenus;
     }
 }
