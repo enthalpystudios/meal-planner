@@ -9,6 +9,9 @@ public class Dish {
     private Long id;
 
     @Column
+    private String shortName;
+
+    @Column
     private String name;
 
     @Column
@@ -20,6 +23,14 @@ public class Dish {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public String getName() {

@@ -3,6 +3,7 @@ package com.enthalpystudios.controller;
 import com.enthalpystudios.dao.DishDAO;
 import com.enthalpystudios.domain.Dish;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class DishController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public List findDishes() {
+    public List<Dish> findDishes() {
         return dishDAO.findAll();
     }
 
@@ -32,6 +33,7 @@ public class DishController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteDish(@PathVariable Long id) {
         dishDAO.delete(id);
     }

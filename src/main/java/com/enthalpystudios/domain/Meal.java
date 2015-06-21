@@ -13,7 +13,7 @@ public class Meal {
     private MealType type;
 
     @OneToMany
-    private List<Dish> dishes; //TODO @ManyToMa
+    private List<DishVariation> dishVariations; //TODO @ManyToMany
 
     public Long getId() {
         return id;
@@ -31,11 +31,11 @@ public class Meal {
         this.type = type;
     }
 
-    public List<Dish> getDishes() {
-        return dishes;
+    public List<DishVariation> getDishVariations() {
+        return dishVariations;
     }
 
-    public void setDishes(List<Dish> dishes) {
-        this.dishes = dishes;
+    public void setDishVariations(List<DishVariation> dishVariations) {
+        this.dishVariations = dishVariations;
     }
 }

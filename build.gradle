@@ -9,6 +9,8 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
         classpath 'org.springframework:springloaded:1.2.3.RELEASE'
+        classpath("org.springframework.boot:spring-boot-starter-test:1.2.3.RELEASE")
+        classpath("com.jayway.restassured:rest-assured:2.4.0")
     }
 }
 
@@ -25,6 +27,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("org.hsqldb:hsqldb")
     testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test:1.2.3.RELEASE")
+    testCompile("com.jayway.restassured:rest-assured:2.4.0")
 }
 
 task wrapper(type: Wrapper) {
